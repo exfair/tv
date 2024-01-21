@@ -104,3 +104,5 @@ https://mn-nl.mncdn.com/blutv_trtsporyildiz_2/trtsporyildiz.smil/chunklist_b2064
 https://mn-nl.mncdn.com/blutv_eurostar2/live_720p2000000kbps/index.m3u8
 #EXTINF:0,SHOW TURK
 https://mn-nl.mncdn.com/blutv_showturk2/live_720p2000000kbps/index.m3u8
+#EXTINF:0,*
+https://new.cache-stream.workers.dev/stream/UC0pYvFPkzSRxkzwUGtnJScg/live.m3u8
