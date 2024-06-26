@@ -1,6 +1,6 @@
 #EXTM3U
 #EXTINF:0,TRT 1
-https://ddc75c8a6akqr.cloudfront.net/v1/master/80dbfc318ab6b980679b32095ba497236de6d2f9/TRT-1/master.m3u8
+https://trt.daioncdn.net/trt-1/master.m3u8?app=web
 #EXTINF:0,TRT 4K
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36
 https://stream2.filbox.com.tr/live/7d6b0f92687edd8eb008a8b4f223f1d0/40/index.m3u8
