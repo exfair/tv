@@ -106,3 +106,11 @@ https://mn-nl.mncdn.com/blutv_eurostar2/live_720p2000000kbps/index.m3u8
 https://mn-nl.mncdn.com/blutv_showturk2/live_720p2000000kbps/index.m3u8
 #EXTINF:0,*
 https://new.cache-stream.workers.dev/stream/UC0pYvFPkzSRxkzwUGtnJScg/live.m3u8
+#EXTINF:0,TRT 1
+https://tv-trt1-dai.medya.trt.com.tr/master.m3u8
+#EXTINF:0,TRT 1
+https://tv-trt1.medya.trt.com.tr/master_1080p.m3u8
+#EXTINF:0,TRT 1
+https://trt.daioncdn.net/trt-1/master.m3u8?app=web
+#EXTINF:0,TRT 1
+https://d1u68oyra9spme.cloudfront.net/master.m3u8
