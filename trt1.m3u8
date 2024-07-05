@@ -1,10 +1,14 @@
 #EXTM3U
 #EXTINF:0,TRT 1
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36
 https://tv-trt1-dai.medya.trt.com.tr/master.m3u8
 #EXTINF:0,TRT 1
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36
 https://d1u68oyra9spme.cloudfront.net/master.m3u8
 #EXTINF:0,TRT 1
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36
 https://trt.daioncdn.net/trt-1/master.m3u8?app=web
 #EXTINF:0,TRT 1
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36
 https://tv-trt1.medya.trt.com.tr/master_1080p.m3u8
 
