@@ -1,0 +1,41 @@
+#EXTM3U
+#EXTINF:0,TRT 1
+https://trt.daioncdn.net/trt-1/master.m3u8?app=web
+#EXTINF:0,KANAL D
+https://demiroren-live.daioncdn.net/kanald/kanald_1080p.m3u8
+#EXTINF:0,ATV
+https://bozztv.com/inim03/live1/atv-tv/playlist.m3u8
+#EXTINF:0,STAR TV
+https://dogus-live.daioncdn.net/startv/startv_720p.m3u8
+#EXTINF:0,SHOW TV
+https://ciner-live.daioncdn.net/showtv/showtv_1080p.m3u8
+#EXTINF:0,NOW TV
+http://bozztv.com/gin-trn09/gin-turkfoxtv/tracks-v1a1/mono.m3u8
+#EXTINF:0,KANAL 7
+https://kanal7-live.daioncdn.net/kanal7/kanal7_1080p.m3u8
+#EXTINF:0,TV 8
+https://tv8-live.daioncdn.net/tv8/tv8_1080p.m3u8
+#EXTINF:0,TV 8 Bucuk
+http://bozztv.com/gin-dvrfl05/gin-tv8_5/index.m3u8
+#EXTINF:0,BEYAZ TV
+https://beyaztv-live.daioncdn.net/beyaztv/beyaztv_1080p.m3u8
+#EXTINF:0,TV 100
+https://tv100.blutv.com/blutv_tv100_live/live.m3u8
+#EXTINF:0,HABER TURK
+https://ciner-live.daioncdn.net/haberturktv/haberturktv_1080p.m3u8
+#EXTINF:0,TRT HABER
+https://tv.ensonhaber.com/trthaber/trthaber_1080p.m3u8
+#EXTINF:0,HABER GLOBAL
+https://tv.ensonhaber.com/haberglobal/haberglobal_720p.m3u8
+#EXTINF:0,KRT TV
+https://krt.blutv.com/blutv_krt_live/live.m3u8
+#EXTINF:0,TVNET 
+https://mn-nl.mncdn.com/tvnet/tvnet/playlist.m3u8
+#EXTINF:0,Kral POP
+https://dogus-live.daioncdn.net/kralpoptv/playlist.m3u8
+#EXTINF:0,A SPOR
+https://ythls.armelin.one/channel/UCJElRTCNEmLemgirqvsW63Q.m3u8
+#EXTINF:0,TRT SPOR
+https://tv-trtspor1.medya.trt.com.tr/master.m3u8
+#EXTINF:0,TRT SPOR ✫
+https://tv-trtspor2.medya.trt.com.tr/master.m3u8
