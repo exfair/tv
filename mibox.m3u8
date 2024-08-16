@@ -89,6 +89,8 @@ https://new.cache-stream.workers.dev/stream/UCtzcebnk0sLhCBtJy7GJaCg/live.m3u8
 https://mn-nl.mncdn.com/blutv_trtcocuk_2/trtcocuk.smil/chunklist_b3128000.m3u8
 #EXTINF:0,Kral POP
 https://new.cache-stream.workers.dev/stream/GuFTuKoXepw/live.m3u8
+#EXTINF:0,EKOL TV
+https://ekoltv-live.ercdn.net/ekoltv/ekoltv_1080p.m3u8
 #EXTINF:0,A SPOR
 https://new.cache-stream.workers.dev/stream/UCJElRTCNEmLemgirqvsW63Q/live.m3u8
 #EXTINF:0,beIN SPORTS HABER
