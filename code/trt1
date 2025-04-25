@@ -1,4 +1,4 @@
 #EXTM3U
 #EXT-X-INDEPENDENT-SEGMENTS
 #EXT-X-STREAM-INF:BANDWIDTH=5420722,CODECS="mp4a.40.2,avc1.640028",RESOLUTION=1920x1080,FRAME-RATE=30,VIDEO-RANGE=SDR,CLOSED-CAPTIONS=NONE
-https://trt.daioncdn.net/trt-1/master.m3u8?app=web
+https://trt.daioncdn.net/trt-1/master_1080p.m3u8?&sid=7ct6ianzdn2v&app=ed3904e8-737b-4a5e-856a-1b0d7a0a94e2&ce=2
