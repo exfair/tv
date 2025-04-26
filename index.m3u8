@@ -1,136 +1,136 @@
 #EXTM3U
 #EXTINF:0,TRT 1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/trt1.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/trt1.m3u8
 #EXTINF:0,KANAL D
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/kanald.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/kanald.m3u8
 #EXTINF:0,ATV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/atv.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/atv.m3u8
 #EXTINF:0,STAR TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/star.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/star.m3u8
 #EXTINF:0,SHOW TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/show.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/show.m3u8
 #EXTINF:0,NOW TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/now.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/now.m3u8
 #EXTINF:0,KANAL 7
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/kanal7.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/kanal7.m3u8
 #EXTINF:0,TV 8
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/tv8.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/tv8.m3u8
 #EXTINF:0,BEYAZ TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/beyaz.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/beyaz.m3u8
 #EXTINF:0,TV 8.5
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/tv85.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/tv85.m3u8
 #EXTINF:0,CNN TURK
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/cnnturk.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/cnnturk.m3u8
 #EXTINF:0,NTV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/ntv.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/ntv.m3u8
 #EXTINF:0,TRT HABER
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/trthaber.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/trthaber.m3u8
 #EXTINF:0,HABER TURK
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/haberturk.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/haberturk.m3u8
 #EXTINF:0,A HABER
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/ahaber.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/ahaber.m3u8
 #EXTINF:0,24 TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/24.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/24.m3u8
 #EXTINF:0,ULKE TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/ulke.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/ulke.m3u8
 #EXTINF:0,TVNET
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/tvnet.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/tvnet.m3u8
 #EXTINF:0,TEVE2
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/teve2.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/teve2.m3u8
 #EXTINF:0,TV 360
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/tv360.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/tv360.m3u8
 #EXTINF:0,HABER GLOBAL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/haberglobal.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/haberglobal.m3u8
 #EXTINF:0,TGRT HABER
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/tgrt.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/tgrt.m3u8
 #EXTINF:0,HALK TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/halk.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/halk.m3u8
 #EXTINF:0,KRT TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/krt.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/krt.m3u8
 #EXTINF:0,ULUSAL KANAL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/ulusal.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/ulusal.m3u8
 #EXTINF:0,TELE1 TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/tele1.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/tele1.m3u8
 #EXTINF:0,SOZCU TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/sozcu.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/sozcu.m3u8
 #EXTINF:0,TV 5
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/tv5.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/tv5.m3u8
 #EXTINF:0,BLOOMBERG HT
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/bloomberght.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/bloomberght.m3u8
 #EXTINF:0,A PARA
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/apara.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/apara.m3u8
 #EXTINF:0,TLC
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/tlc.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/tlc.m3u8
 #EXTINF:0,DMAX
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/dmax.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/dmax.m3u8
 #EXTINF:0,TRT TURK
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/trtturk.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/trtturk.m3u8
 #EXTINF:0,TRT BELGESEL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/trtbelgesel.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/trtbelgesel.m3u8
 #EXTINF:0,TV 100
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/tv100.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/tv100.m3u8
 #EXTINF:0,Diyanet TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/diyanet.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/diyanet.m3u8
 #EXTINF:0,Çiftçi TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/ciftcitv.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/ciftcitv.m3u8
 #EXTINF:0,TRT COCUK
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/trtcocuk.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/trtcocuk.m3u8
 #EXTINF:0,Kral POP
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/kralpop.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/kralpop.m3u8
 #EXTINF:0,EKOL TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/ekol.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/ekol.m3u8
 #EXTINF:0,A SPOR
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/aspor.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/aspor.m3u8
 #EXTINF:0,beIN SPORTS HABER
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/beinsportshaber.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/beinsportshaber.m3u8
 #EXTINF:0,TRT SPOR
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/trtspor.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/trtspor.m3u8
 #EXTINF:0,TRT SPOR ✫
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/trtsporyildiz.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/trtsporyildiz.m3u8
 #EXTINF:0,Tivibu SPOR
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://github.com/exfair/tv/raw/main/code/tivibuspor.m3u8
+https://raw.githubusercontent.com/exfair/tv/main/code/tivibuspor.m3u8
