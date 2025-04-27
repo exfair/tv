@@ -1,0 +1,308 @@
+/* Copyright 2024 - Herber eDevelopment - Jaroslav Herber */
+
+.mouse-controls {
+	position: fixed;
+	z-index: 21;
+	height: 100%;
+	width: 10px;
+	opacity: 0;
+	color: #fff;
+	text-align: center;
+	line-height: 70px;
+}
+
+#nav_activator {
+	left: 0;
+	top: 0;
+}
+
+#epg_activator {
+	left: 0;
+	top: 0;
+	height: 70px;
+	width: 100%;
+	z-index: 5;
+}
+
+	.epg-enabled #epg_activator {
+		z-index: 2;
+	}
+
+#controls_activator {
+	height: 100px;
+	width: 100%;
+	bottom: 0;
+	z-index: 3;
+	transition: opacity 0.2s;
+}
+
+.mousemove .mouse-controls {
+	opacity: 1;
+}
+
+#playback_controller {
+	display: block;
+	position: fixed;
+	z-index: 3;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 90px;
+	text-align: center;
+	color: #fff;
+	transform: translateY(100px);
+	transition: transform 0.5s;
+	background-image: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+}
+
+#custom_controls {
+	display: flex;
+	width: 100%;
+	padding: 0 3%;
+	box-sizing: border-box;
+	font-size: 13px;
+	align-items: center;
+	opacity: 0;
+	transition: all 0.2s;
+}
+
+#controls_arrow {
+	text-shadow: 0 0 4px #000;
+}
+
+.controls .control-item {
+	border: none;
+	height: 32px;
+	width: 32px;
+	margin: 10px;
+	padding: 1px 2px;
+	box-sizing: border-box;
+	cursor: pointer;
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+
+.controls .control-item svg {
+	display: none;
+	fill: #fff;
+}
+
+#backwards, #forwards {
+	/*display: none;*/
+}
+
+.volume-100 .icon-volume-100,
+.volume-50 .icon-volume-50,
+.volume-0 .icon-volume-0,
+.icon-off, .icon-visible,
+.active .icon-on {
+	display: block !important;
+}
+
+.active .icon-off {
+	display: none !important;
+}
+
+#progress_container {
+	flex-grow: 1;
+	cursor: pointer;
+	height: 8px;
+	margin: 10px 3%;
+	opacity: 0;
+}
+
+#progress {
+	display: block;
+	width: 100%;
+	height: 6px;
+	margin: 0;
+	border: none;
+	overflow: hidden;
+	color: #ff5e00;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 20px #000;
+	opacity: 0.8;
+}
+
+#progress[data-state="fake"] {
+	background: #ff5e00;
+	height: 65%;
+}
+
+#progress_bar {
+	width: 0%;
+	height: 100%;
+	display: inline-block;
+	background-color: #ff5e00;
+}
+
+
+#progress::-webkit-progress-value {
+	background: #ff5e00;
+}
+
+#progress::-moz-progress-bar {
+	background: #ff5e00;
+}
+
+#progress::-webkit-progress-bar {
+	background: #fff;
+}
+
+
+#volume_control {
+	position: relative;
+}
+
+	#volume_progress_container {
+		opacity: 0;
+		position: absolute;
+		top: 3px;
+		right: -100px;
+		height: 44px;
+		transition: opacity 0.2s;
+	}
+
+	#volume_control:hover #volume_progress_container {
+		opacity: 1;
+	}
+
+	#volume_bar {
+		width: 100px;
+		height: 4px;
+		margin: 20px 0 0;
+		cursor: pointer;
+		background: #fff;
+		appearance: none;
+		border-radius: 2px;
+		box-shadow: 0 0 10px #000;
+		opacity: 0.8;
+	}
+
+
+input[type=range]::-moz-range-thumb {
+	height: 16px;
+	width: 16px;
+	border-radius: 16px;
+	border: none;
+	background: #ff5e00;
+	appearance: none;
+	box-shadow: 0 0 12px 3px rgba(255, 0, 128, 0.8);
+}
+
+input[type=range]::-webkit-slider-thumb {
+	height: 16px;
+	width: 16px;
+	border-radius: 16px;
+	border: none;
+	background: #ff5e00;
+	appearance: none;
+	box-shadow: 0 0 12px 3px rgba(255, 0, 128, 0.8);
+}
+
+.controls-enabled #playback_controller,
+#playback_controller.show-volume {
+	transform: translateY(0);
+}
+
+.controls-enabled #controls_arrow,
+.show-volume #controls_arrow {
+	display: none;
+}
+
+.show-volume .control-item,
+.show-volume #progress_container {
+	opacity: 0;
+}
+
+.controls-enabled #custom_controls,
+.show-volume #custom_controls,
+.controls-enabled .controls .control-item,
+.controls-enabled #progress_container,
+.show-volume #volume_progress_container,
+.show-volume #volume_control .control-item {
+	opacity: 1;
+}
+
+#time_progress {
+	margin: 0 auto;
+	text-align: center;
+	overflow: hidden;
+	height: auto;
+	width: auto;
+}
+
+@media only screen and (max-width: 500px) {
+	#time_progress { width: 0; }
+
+	#volume_progress_container {
+		top: -64px;
+		left: -26px; /* half width of the button + margins */
+		right: auto;
+	}
+
+}
+
+
+
+/*
+#channel_settings {
+	position: fixed;
+	z-index: 4;
+	width: 100%;
+	height: 100%;
+	min-height: 800px;
+	top: 0;
+	left: 0;
+}
+
+	#channel_settings_content {
+		position: absolute;
+		z-index: 2;
+		left: 50%; top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		width: 400px;
+		min-height: 200px;
+		max-height: 50%;
+		overflow: auto;
+		padding: 20px;
+		border-radius: 2px;
+		border: 1px solid #bbb;
+		box-shadow: 0 0 16px 0 #454545;
+		color: #fff;
+		background: #222;
+	}
+
+.channel-settings-opened #channel_settings {
+	display: block;
+}
+
+.channel-setting {
+	padding: 0 0 10px;
+}
+
+	.channel-setting label {
+		display: block;
+	}
+
+	.channel-setting p {
+		font-size: 80%;
+		margin: 0;
+	}
+*/
+
+.ui-enabled #ui_elements {
+    display: block;
+}
+
+    .ui-element {
+        display: none;
+        font-size: 26px;
+        background: #06f;
+        color: #fff;
+        border: 1px solid #999;
+        border-radius: 4px;
+        box-sizing: border-box;
+        padding: 6px 12px;
+    }
