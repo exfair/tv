@@ -85,7 +85,7 @@ https://raw.githubusercontent.com/exfair/tv/refs/heads/main/code/sozcu.m3u8
 https://raw.githubusercontent.com/exfair/tv/refs/heads/main/code/tv5.m3u8
 #EXTINF:0,BLOOMBERG HT
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://raw.githubusercontent.com/exfair/tv/main/bloomberght.m3u8
+https://raw.githubusercontent.com/exfair/tv/refs/heads/main/bloomberght.m3u8
 #EXTINF:0,A PARA
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
 https://raw.githubusercontent.com/exfair/tv/refs/heads/main/code/apara.m3u8
@@ -134,3 +134,6 @@ https://raw.githubusercontent.com/exfair/tv/refs/heads/main/code/trtsporyildiz.m
 #EXTINF:0,Tivibu SPOR
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
 https://raw.githubusercontent.com/exfair/tv/refs/heads/main/code/tivibuspor.m3u8
+#EXTINF:0,HT SPOR
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
+https://raw.githubusercontent.com/exfair/tv/refs/heads/main/code/htspor.m3u8
