@@ -4,7 +4,7 @@ This list has been added for direct player playback. It supports Windows, Mac, A
 
 Add this address. https://github.com/exfair/tv/raw/main/index.m3u8
 
-NEW Add for playback address via web browser. https://webtv.wasmer.app/
+NEW Add for playback address via web browser. https://web-tv.wasmer.app/
 
 Ücretsiz Türkçe 1080p Canlı TV Yayını M3U8
 
@@ -12,4 +12,4 @@ Bu liste, doğrudan oynatıcı için eklenmiştir. Windows, Mac, Android'i deste
 
 Bu adresi ekleyin. https://github.com/exfair/tv/raw/main/index.m3u8
 
-YENI Web tarayıcı üzerinden oynatma adresi için ekleyin. https://webtv.wasmer.app/
+YENI Web tarayıcı üzerinden oynatma adresi için ekleyin. https://web-tv.wasmer.app/
