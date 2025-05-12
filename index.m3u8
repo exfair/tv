@@ -112,7 +112,7 @@ https://raw.githubusercontent.com/exfair/tv/refs/heads/main/code/tv100.m3u8
 https://raw.githubusercontent.com/exfair/tv/refs/heads/main/code/diyanet.m3u8
 #EXTINF:0,Çiftçi TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-https://raw.githubusercontent.com/exfair/tv/refs/heads/main/code/ciftcitv.m3u8
+https://raw.githubusercontent.com/exfair/tv/refs/heads/main/code/ciftci.m3u8
 #EXTINF:0,TRT COCUK
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
 https://raw.githubusercontent.com/exfair/tv/refs/heads/main/code/trtcocuk.m3u8
