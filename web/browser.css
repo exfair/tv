@@ -1,0 +1,125 @@
+/* Copyright 2023 - Herber eDevelopment - Jaroslav Herber */
+
+.fullscreen {
+	min-height: 20px;
+}
+
+	.fullscreen-popup {
+		padding: 20px;
+	}
+
+#settings, #guide {
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	min-height: auto;
+	overflow: auto;
+	padding: 0;
+	color: #fff;
+	background: linear-gradient(to bottom, rgba(0,100,100,0.1) 0%, rgba(0,0,0,0.4) 100%), radial-gradient(at top center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 120%) #989898;
+	background-blend-mode: multiply,multiply;
+}
+
+#custom_confirm_content, #channel_error_content, #modal_content {
+	font-size: 18px;
+}
+
+#settings_form, #guide_content {
+	margin: auto;
+	padding: 2% 3%;
+	max-width: 600px;
+}
+
+#settings_form {
+	max-width: 900px;
+}
+
+	#settings_form .form-row,
+	#settings_form .submit-row {
+		max-width: 680px;
+		margin: auto;
+	}
+
+#guide_content {
+	max-width: 1000px;
+}
+
+	#guide_content p {
+		margin-top: 6px;
+	}
+
+.form-row {
+	min-height: 80px;
+}
+
+.submit-row {
+	padding: 26px 0 0 0;
+}
+
+.form-row label {
+	width: auto;
+	text-align: left;
+	padding: 4px 0 4px 0;
+	display: block;
+}
+
+.form-row input, .form-row select, .form-row button, .submit-row button {
+	width: 100%;
+}
+
+#favourites_group,
+#channel_prev, #channel_next,
+#search_button_hint {
+	display: none;
+}
+
+#nav,
+#channel_settings,
+#channel_group {
+	font-size: 20px;
+}
+
+#group_list .active:before {
+	font-size: 30px;
+	line-height: 34px;
+	height: 40px;
+}
+
+#epg_nav_time {
+	top: 18px;
+}
+
+#channel_epg {
+	font-size: 26px;
+}
+
+#channel_info,
+#channel_input {
+	font-size: 30px;
+	min-height: 200px;
+}
+
+#channel_number {
+	font-size: 60px;
+}
+
+.list-ch {
+	min-width: 30px;
+}
+
+#ch_logo {
+	max-width: 140px;
+	max-height: 140px;
+	margin: 0 30px 0 0;
+}
+
+
+#search_field {
+	margin-top: 20px !important;
+	font-size: 20px;
+}
+
+#search_input, #search_field, #search_field:disabled {
+	width: 420px !important;
+}
