@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="referrer" content="no-referrer" />
+	<title>V</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="TV">
+	<meta name="keywords" content="TV">
+	<meta name="author" content="TV">
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="controls.css"/>
+	<link rel="stylesheet" type="text/css" href="epg.css"/>
+	<link rel="stylesheet" type="text/css" href="browser.css"/>
+	<script>var sAppVersion = '2.3.0', sDeviceFamily = 'Browser';
+		var sDefaultUrl = "https://github.com/exfair/tv/raw/main/index.m3u8";	</script>
+	<script src="lang.js"></script>
+	<script src="lang-browser.js"></script>
+	<!--script src="https://cdn.jsdelivr.net/npm/hls.js"></script-->
+	<script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/dashjs/dist/modern/umd/dash.all.min.js"></script>
+</head>
+<body id="body" class="browser">
+	<div id="history_manager" class="fullscreen">
+		<div id="history_manager_content" class="fullscreen-popup"></div>
+	</div>
+	<div id="settings">
+		<div id="settings_form">
+			<div id="settings_tabs">
+				<div id="settings_general_tab" class="tab i18n active" onclick="toggleAdvancedSettings(1);" data-langid="tabGeneralSettings">General Settings</div>
+				<div id="settings_advanced_tab" class="tab i18n" onclick="toggleAdvancedSettings(2);" data-langid="tabAdvancedSettings">Advanced Settings</div>
+				<div class="CLEAR"></div>
+			</div>
+			<div id="main_settings">
+				<p class="hint i18n ALIGNCENTER" data-langid="corsHint">⚠ Some channels might not play due to strict CORS policy. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin" target="_blank">More info and how to fix this.</a></p>
+				<div class="form-row">
+					<label class="i18n" for="sLangId" data-langid="chooseLang">Language</label>
+					<select id="sLangId" name="lang" onchange="setLangId(this.value);" autofocus="true" class="focusable" data-index="0">
+						<option value="en" selected="selected">EN | English</option>
+						<option value="tr">TR | Türk</option>
+					</select>
+				</div>
+				<div class="form-row">
+					<label class="i18n" data-langid="localLoadLabel">Local m3u(8)-file</label>
+					<div class="input">
+						<input id="file_picker" type="file" class="HIDDEN" oninput="filePickerHandler(this);">
+						<button onclick="openExplorerButton();" id="settings_open_usb_button" name="explorer_manager" class="i18n FLOATLEFT button focusable" data-langid="openExplorerButton" data-index="1" data-down="3" data-right="2">open explorer</button><!--
+						--><button onclick="openHistoryButton();" id="settings_open_history_button" name="history_manager" class="i18n button focusable" data-langid="openHistoryButton" data-index="2" data-left="1">history</button>
+						<div class="CLEAR"></div>
+					</div>
+				</div>
+				<div class="form-row">
+					<label class="i18n" for="sM3uUrl" data-langid="m3uSource">URL to m3u(8)-file</label>
+					<input id="sM3uUrl" type="url" name="m3uUrl" value="" placeholder="https://example.com/channels.m3u8" class="focusable" data-index="3" data-up="1">
+				</div>
+				<div class="submit-row">
+					<button onclick="downloadButton();" id="settings_download_button" name="download" class="i18n FLOATLEFT button focusable" data-langid="downloadButton" data-index="4">download file</button>
+					<span id="playlist_downloaded" class="FLOATLEFT icon icon-check"></span>
+					<div class="CLEAR"></div>
+					<button onclick="saveButton();" id="settings_save_button" name="save" class="i18n FLOATLEFT button focusable" data-langid="saveButton" data-index="5" data-down="7" data-right="6">save and close</button><!--
+					--><button onclick="deleteButton();" id="settings_delete_button" name="delete" class="i18n button focusable" data-langid="deleteButton" data-index="6" data-left="5">delete playlist</button>
+					<div class="CLEAR"></div>
+				</div>
+			</div>
+			<div id="advanced_settings">
+				<div class="form-row">
+					<label class="i18n" for="mousewheel_setting" data-langid="chooseMousewheel">Mousewheel</label>
+					<select id="mousewheel_setting" name="mousewheel" onchange="setMousewheelSetting(this.value);" class="focusable" data-index="0">
+						<option class="i18n" value="volume" selected="selected" data-langid="volumeSetting">Volume up/down</option>
+						<option class="i18n" value="channel" data-langid="channelSetting">Channel up/down</option>
+					</select>
+				</div>
+				<div class="form-row">
+					<label class="i18n" for="buffer_setting" data-langid="bufferSetting">Buffer</label>
+					<select id="buffer_setting" name="buffer" onchange="setBufferSetting(this.value);" class="focusable" data-index="1">
+						<option value="-">0s</option>
+						<option value="5">5s</option>
+						<option value="10">10s</option>
+						<option value="15" selected="selected">15s (default)</option>
+						<option value="30">30s</option>
+						<option value="45">45s</option>
+					</select>
+				</div>
+				<div class="form-row">
+					<label class="i18n" for="user_agent_setting" data-langid="customUserAgentSetting">User Agent</label>
+					<input id="user_agent_setting" type="text" onchange="setUserAgentSetting(this.value);" class="focusable" data-index="2">
+				</div>
+				<div class="form-row">
+					<label class="i18n" for="reload_playlist_setting" data-langid="reloadPlaylistOnStart">Download playlist on each start</label>
+					<label class="switch">
+						<input id="reload_playlist_setting" type="checkbox" onchange="setReloadPlaylistSetting(this.checked);" class="switch_input focusable" data-index="3">
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<div class="form-row">
+					<label class="i18n" for="enable_epg_setting">EPG</label>
+					<label class="switch">
+						<input id="enable_epg_setting" type="checkbox" onchange="setEpgEnableSetting(this.checked);" class="switch_input focusable" data-index="4">
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<div id="epg_settings">
+					<div class="form-row">
+						<label class="i18n" for="epg_prefere_playlist" data-langid="epgSourceFromPlaylist">EPG URL from playlist</label>
+						<div style="display: flex;">
+							<label class="switch" style="flex-shrink: 0">
+								<input id="epg_prefere_playlist" type="checkbox" onchange="setEpgFromPlaylistSetting(this.checked);" class="switch_input focusable" data-index="5">
+								<span class="slider round"></span>
+							</label>
+							<label id="epg_url_from_playlist" for="epg_prefere_playlist"></label>
+						</div>
+					</div>
+					<div class="form-row">
+						<label class="i18n" for="epg_url" data-langid="epgSource">EPG Source</label>
+						<input id="epg_url" type="url" name="epgUrl" value="" placeholder="https://example.com/epg.xml" onchange="setEpgUrl(this.value);" class="focusable" data-index="6">
+						<p id="hint_use_playlist_epg" onclick="setPlaylistEpgUrl();" class="i18n" data-langid="usePlaylistEpgUrl">Use EPG source from your playlist instead?</p>
+					</div>
+					<div class="form-row">
+						<label for="epg_time_shift"><span class="i18n" data-langid="epgTimeShift">EPG Timeshift</span> <span id="epg_time_shift_output"></span></label>
+						<input id="epg_time_shift" type="range" name="epgTimeShift" value="0" min="-23" max="23" step="0.5" oninput="updateEpgTimeShift(true);" class="focusable" data-index="7">
+					</div>
+					<div class="form-row">
+						<label class="i18n" for="epg_grab_interval" data-langid="epgGrabInterval">EPG grab interval</label>
+						<select id="epg_grab_interval" name="epgGrabInterval" onchange="updateEpgGrabInterval(true);" class="focusable" data-index="8">
+							<option value="2">2 h</option>
+							<option value="3">3 h</option>
+							<option value="6">6 h</option>
+							<option value="12" selected="selected">12 h</option>
+							<option value="24">24 h</option>
+						</select>
+					</div>
+					<div class="submit-row">
+						<button onclick="downloadEpg();" name="download_epg" class="i18n button focusable" data-langid="downloadEpgButton" data-index="9">download epg now</button>
+					</div>
+					<div class="form-row">
+						<div id="epg_downloaded"></div>
+						<div id="epg_downloaded_programms"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id='loader' class="fullscreen"></div>
+	<div id='status' class="fullscreen"></div>
+	<div id='controls_activator' class="mouse-controls"><span id="controls_arrow">&#8675;</span></div>
+	<div id='nav_activator' class="mouse-controls"></div>
+	<div id='epg_activator' class="mouse-controls"><span id="epg_arrow">&#8673;</span></div>
+	<div id='nav'>
+		<div id="search_input_container">
+			<div id="search_input" class="form-row">
+				<div id="active_group"></div>
+				<input id="search_field" maxlength="14" class="i18nPlaceholder" data-langid="searchPlaceholder" name="search" type="search" oninput="searchChannels(this.value);" value="" placeholder="Search">
+				<p id="search_button_hint" class="i18n" data-langid="redButtonHint"><span class="red-button">A</span> search</p>
+			</div>
+		</div>
+		<div id="list_container_scrollarea">
+			<div id="list_container">
+				<div id="group_list" class="custom-scrollbar">
+					<ul id="main_nav">
+						<li id="settings_group" class="i18n icon icon-settings" data-langid="settings_menu" data-prev="dynamic_groups_list">Settings</li>
+						<li id="nav_epg_overview" class="i18n icon icon-list" data-langid="epg_menu">EPG</li>
+						<!--li id="nav_search" class="i18n icon icon-search" data-langid="searchPlaceholder">Search</li-->
+						<li id="open_guide" class="i18n icon icon-guide" data-langid="guide_menu" data-next="dynamic_groups_list">Guide</li>
+						<!--li id="nav_channel_edit" onclick="toggleChannelEditMode('move')" class="i18n" data-langid="editChannels" data-next="dynamic_groups_list">✏️ Edit channel list</li-->
+					</ul>
+					<div class="HR"></div>
+					<h2 class="list_headline i18n" data-langid="groups">Groups</h2>
+					<ul id="dynamic_groups_list"></ul>
+					<div id="channel_edit_help"></div>
+				</div>
+				<div id="channel_list" class="custom-scrollbar" onscroll="channelScrollEvent()"></div>
+			</div>
+		</div>
+	</div>
+	<div id="epg_nav_list_container"><div id="epg_nav_time"></div><div id="epg_nav_list" class="custom-scrollbar"></div></div>
+	<!-- epg details -->
+	<div id="epg_nav_channel_container"><div id="epg_nav_channel"></div></div>
+	<div id="epg_overview">
+		<div class="close-button" onclick="hideEpgOverview()"></div>
+		<div id="epg_overview_time"></div>
+		<div id="epg_overview_table" class="custom-scrollbar"></div>
+	</div>
+	<div id="epg_container">
+		<div id="epg" class="custom-scrollbar"></div>
+	</div>
+	<div id="channel_settings">
+		<div id="list_container_right_scrollarea">
+			<div id='channel_tracking'></div>
+			<div id="list_container_right">
+				<div id="channel_settings_content" class="custom-scrollbar">
+					<div class="channel-setting-container" id="channel_settings_subs"></div>
+					<div class="channel-setting-container" id="channel_settings_video">
+						<div class="channel-setting form-row">
+							<label class="i18n" for="video_format_setting" data-langid="channelSettingFormat">Video format</label>
+							<select id="video_format_setting" class="selection" name="videoFormatSwitcher" onchange="setVideoFormatSetting(this.value);">
+								<option value="fit" class="i18n" data-langid="channelSettingFormatOriginal">original</option>
+								<option value="fill" class="i18n" data-langid="channelSettingFormatFill">fill / stretch</option>
+								<option value="zoom" class="i18n" data-langid="channelSettingFormatZoom">zoom</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div id="channel_settings_list" class="custom-scrollbar">
+					<h2 class="list_headline i18n" data-langid="channelSettings">Channel settings</h2>
+					<ul id="channel_settings_nav">
+						<li class="i18n" id="channel-setting-subs" data-langid="channelSettingSubtitle" onmouseenter="focusListItem(this)" data-setting="sub-dub">subtitle / audio</li>
+						<li class="i18n" id="channel-setting-video" data-langid="channelSettingVideo" data-setting="video">video / format</li>
+						<li class="i18n" id="channel-setting-favourite" onmouseenter="focusListItem(this)" data-langid="channelSettingFavs">put channel in favourites</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id='channel_input'></div>
+	<div id='channel_info'>
+		<div id="channel_prev"></div>
+		<div id="channel_next"></div>
+		<div id="channel_number"></div>
+		<div id='channel_name'></div>
+		<div id='channel_group'></div>
+		<div id='channel_epg'></div>
+	</div>
+	<div id="subtitles"></div>
+	
+	<div id="guide" onclick="hideGuide();" class="custom-scrollbar">
+		<div id="guide_content"></div>
+	</div>
+	<div id="channel_error" class="fullscreen">
+		<div id="channel_error_content" class="fullscreen-popup"></div>
+	</div>
+	<div id="modal" class="fullscreen" onclick="hideModal();">
+		<div id="modal_content" class="fullscreen-popup custom-scrollbar"></div>
+	</div>
+	<div id="debugger"></div>
+	<div id="custom_confirm" class="fullscreen"></div>
+	<div id="play_button" class="fullscreen" onclick="playVideo();"><div class="play_button"></div></div>
+	<video id="player" poster="/images/splash.png" loop="true" width="1920" height="1080" data-setup="{}"></video>
+	<div id="ttml_subtitles"></div>
+
+	<div id="playback_controller">
+		<div id="progress_container">
+			<progress id="progress" value="0" min="0"></progress>
+		</div>
+		<div id="custom_controls" class="controls">
+			<div class="control-item" id="jump_start">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-visible" viewBox="7 0 24 24" focusable="false" transform="scale(-1 1)"><path d="M9.109,2.27c0.139-0.072,0.303-0.051,0.426,0.043l10.775,8.503 c0.094,0.073,0.154,0.191,0.154,0.312c0,0.119-0.061,0.239-0.154,0.313L9.535,19.944c-0.072,0.057-0.162,0.087-0.252,0.087 l-0.174-0.04c-0.135-0.064-0.225-0.207-0.225-0.361v-17C8.885,2.476,8.975,2.334,9.109,2.27z"/><path d="M19.287,2.26h2.656c0.174,0,0.314,0.183,0.314,0.4v16.935c0,0.222-0.141,0.404-0.314,0.404h-2.656 c-0.176,0-0.318-0.183-0.318-0.404V2.661C18.969,2.443,19.111,2.26,19.287,2.26z"/></svg>
+			</div>
+			<div class="control-item" id="fast_backwards">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-visible" viewBox="0 0 24 24" focusable="false" transform="scale(-1 1)"><path d="M9.109,2.27c0.139-0.072,0.303-0.051,0.426,0.043l10.775,8.503 c0.094,0.073,0.154,0.191,0.154,0.312c0,0.119-0.061,0.239-0.154,0.313L9.535,19.944c-0.072,0.057-0.162,0.087-0.252,0.087 l-0.174-0.04c-0.135-0.064-0.225-0.207-0.225-0.361v-17C8.885,2.476,8.975,2.334,9.109,2.27z"/><path d="M0.221,2.27c0.141-0.072,0.307-0.051,0.424,0.043l10.777,8.503 c0.096,0.073,0.154,0.191,0.154,0.312c0,0.119-0.059,0.239-0.154,0.313L0.645,19.944c-0.072,0.057-0.16,0.087-0.246,0.087 l-0.178-0.04C0.084,19.926,0,19.784,0,19.629V2.63C0,2.476,0.084,2.334,0.221,2.27z"/></svg>
+			</div>
+
+			<div class="control-item" id="playpause">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-play icon-on" viewBox="0 0 240 240" focusable="false"><path d="M62.8,199.5c-1,0.8-2.4,0.6-3.3-0.4c-0.4-0.5-0.6-1.1-0.5-1.8V42.6c-0.2-1.3,0.7-2.4,1.9-2.6c0.7-0.1,1.3,0.1,1.9,0.4l154.7,77.7c2.1,1.1,2.1,2.8,0,3.8L62.8,199.5z"></path></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-pause icon-off" viewBox="0 0 240 240" focusable="false"><path d="M100,194.9c0.2,2.6-1.8,4.8-4.4,5c-0.2,0-0.4,0-0.6,0H65c-2.6,0.2-4.8-1.8-5-4.4c0-0.2,0-0.4,0-0.6V45c-0.2-2.6,1.8-4.8,4.4-5c0.2,0,0.4,0,0.6,0h30c2.6-0.2,4.8,1.8,5,4.4c0,0.2,0,0.4,0,0.6V194.9z M180,45.1c0.2-2.6-1.8-4.8-4.4-5c-0.2,0-0.4,0-0.6,0h-30c-2.6-0.2-4.8,1.8-5,4.4c0,0.2,0,0.4,0,0.6V195c-0.2,2.6,1.8,4.8,4.4,5c0.2,0,0.4,0,0.6,0h30c2.6,0.2,4.8-1.8,5-4.4c0-0.2,0-0.4,0-0.6V45.1z"></path></svg>
+			</div>
+
+			<div class="control-item" id="fast_forwards">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-visible" viewBox="0 0 24 24" focusable="false"><path d="M9.109,2.27c0.139-0.072,0.303-0.051,0.426,0.043l10.775,8.503 c0.094,0.073,0.154,0.191,0.154,0.312c0,0.119-0.061,0.239-0.154,0.313L9.535,19.944c-0.072,0.057-0.162,0.087-0.252,0.087 l-0.174-0.04c-0.135-0.064-0.225-0.207-0.225-0.361v-17C8.885,2.476,8.975,2.334,9.109,2.27z"/><path d="M0.221,2.27c0.141-0.072,0.307-0.051,0.424,0.043l10.777,8.503 c0.096,0.073,0.154,0.191,0.154,0.312c0,0.119-0.059,0.239-0.154,0.313L0.645,19.944c-0.072,0.057-0.16,0.087-0.246,0.087 l-0.178-0.04C0.084,19.926,0,19.784,0,19.629V2.63C0,2.476,0.084,2.334,0.221,2.27z"/></svg>
+			</div>
+			<div class="control-item" id="jump_end">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-visible" viewBox="7 0 24 24" focusable="false"><path d="M9.109,2.27c0.139-0.072,0.303-0.051,0.426,0.043l10.775,8.503 c0.094,0.073,0.154,0.191,0.154,0.312c0,0.119-0.061,0.239-0.154,0.313L9.535,19.944c-0.072,0.057-0.162,0.087-0.252,0.087 l-0.174-0.04c-0.135-0.064-0.225-0.207-0.225-0.361v-17C8.885,2.476,8.975,2.334,9.109,2.27z"/><path d="M19.287,2.26h2.656c0.174,0,0.314,0.183,0.314,0.4v16.935c0,0.222-0.141,0.404-0.314,0.404h-2.656 c-0.176,0-0.318-0.183-0.318-0.404V2.661C18.969,2.443,19.111,2.26,19.287,2.26z"/></svg>
+			</div>
+
+			<div class="control-item" id="cs_subtitles" onclick="toggleSubtitles()">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-cc-on icon-on" viewBox="0 0 240 240" focusable="false"><path d="M215,40H25c-2.7,0-5,2.2-5,5v150c0,2.7,2.2,5,5,5h190c2.7,0,5-2.2,5-5V45C220,42.2,217.8,40,215,40z M108.1,137.7c0.7-0.7,1.5-1.5,2.4-2.3l6.6,7.8c-2.2,2.4-5,4.4-8,5.8c-8,3.5-17.3,2.4-24.3-2.9c-3.9-3.6-5.9-8.7-5.5-14v-25.6c0-2.7,0.5-5.3,1.5-7.8c0.9-2.2,2.4-4.3,4.2-5.9c5.7-4.5,13.2-6.2,20.3-4.6c3.3,0.5,6.3,2,8.7,4.3c1.3,1.3,2.5,2.6,3.5,4.2l-7.1,6.9c-2.4-3.7-6.5-5.9-10.9-5.9c-2.4-0.2-4.8,0.7-6.6,2.3c-1.7,1.7-2.5,4.1-2.4,6.5v25.6C90.4,141.7,102,143.5,108.1,137.7z M152.9,137.7c0.7-0.7,1.5-1.5,2.4-2.3l6.6,7.8c-2.2,2.4-5,4.4-8,5.8c-8,3.5-17.3,2.4-24.3-2.9c-3.9-3.6-5.9-8.7-5.5-14v-25.6c0-2.7,0.5-5.3,1.5-7.8c0.9-2.2,2.4-4.3,4.2-5.9c5.7-4.5,13.2-6.2,20.3-4.6c3.3,0.5,6.3,2,8.7,4.3c1.3,1.3,2.5,2.6,3.5,4.2l-7.1,6.9c-2.4-3.7-6.5-5.9-10.9-5.9c-2.4-0.2-4.8,0.7-6.6,2.3c-1.7,1.7-2.5,4.1-2.4,6.5v25.6C135.2,141.7,146.8,143.5,152.9,137.7z"></path></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-cc-off icon-off" viewBox="0 0 240 240" focusable="false"><path d="M99.4,97.8c-2.4-0.2-4.8,0.7-6.6,2.3c-1.7,1.7-2.5,4.1-2.4,6.5v25.6c0,9.6,11.6,11.4,17.7,5.5c0.7-0.7,1.5-1.5,2.4-2.3l6.6,7.8c-2.2,2.4-5,4.4-8,5.8c-8,3.5-17.3,2.4-24.3-2.9c-3.9-3.6-5.9-8.7-5.5-14v-25.6c0-2.7,0.5-5.3,1.5-7.8c0.9-2.2,2.4-4.3,4.2-5.9c5.7-4.5,13.2-6.2,20.3-4.6c3.3,0.5,6.3,2,8.7,4.3c1.3,1.3,2.5,2.6,3.5,4.2l-7.1,6.9C107.9,100,103.8,97.8,99.4,97.8z M144.1,97.8c-2.4-0.2-4.8,0.7-6.6,2.3c-1.7,1.7-2.5,4.1-2.4,6.5v25.6c0,9.6,11.6,11.4,17.7,5.5c0.7-0.7,1.5-1.5,2.4-2.3l6.6,7.8c-2.2,2.4-5,4.4-8,5.8c-8,3.5-17.3,2.4-24.3-2.9c-3.9-3.6-5.9-8.7-5.5-14v-25.6c0-2.7,0.5-5.3,1.5-7.8c0.9-2.2,2.4-4.3,4.2-5.9c5.7-4.5,13.2-6.2,20.3-4.6c3.3,0.5,6.3,2,8.7,4.3c1.3,1.3,2.5,2.6,3.5,4.2l-7.1,6.9C152.6,100,148.5,97.8,144.1,97.8L144.1,97.8z M200,60v120H40V60H200 M215,40H25c-2.7,0-5,2.2-5,5v150c0,2.7,2.2,5,5,5h190c2.7,0,5-2.2,5-5V45C220,42.2,217.8,40,215,40z"></path></svg>
+			</div>
+
+			<div id="volume_control">
+				<div id="volume_progress_container">
+					<input id="volume_bar" type="range" min="0" max="1" value="1" step="0.01">
+				</div>
+				<div class="control-item volume-100" id="volume">
+					<svg xmlns="http://www.w3.org/2000/svg" class="icon-volume-0" viewBox="0 0 240 240" focusable="false"><path d="M116.4,42.8v154.5c0,2.8-1.7,3.6-3.8,1.7l-54.1-48.1H28.9c-2.8,0-5.2-2.3-5.2-5.2V94.2c0-2.8,2.3-5.2,5.2-5.2h29.6l54.1-48.1C114.6,39.1,116.4,39.9,116.4,42.8z M212.3,96.4l-14.6-14.6l-23.6,23.6l-23.6-23.6l-14.6,14.6l23.6,23.6l-23.6,23.6l14.6,14.6l23.6-23.6l23.6,23.6l14.6-14.6L188.7,120L212.3,96.4z"></path></svg>
+					<svg xmlns="http://www.w3.org/2000/svg" class="icon-volume-50" viewBox="0 0 240 240" focusable="false"><path d="M116.4,42.8v154.5c0,2.8-1.7,3.6-3.8,1.7l-54.1-48.1H28.9c-2.8,0-5.2-2.3-5.2-5.2V94.2c0-2.8,2.3-5.2,5.2-5.2h29.6l54.1-48.1C114.7,39.1,116.4,39.9,116.4,42.8z M178.2,120c0-22.7-18.5-41.2-41.2-41.2v20.6c11.4,0,20.6,9.2,20.6,20.6c0,11.4-9.2,20.6-20.6,20.6v20.6C159.8,161.2,178.2,142.7,178.2,120z"></path></svg>
+					<svg xmlns="http://www.w3.org/2000/svg" class="icon-volume-100" viewBox="0 0 240 240" focusable="false"><path d="M116.5,42.8v154.4c0,2.8-1.7,3.6-3.8,1.7l-54.1-48H29c-2.8,0-5.2-2.3-5.2-5.2V94.3c0-2.8,2.3-5.2,5.2-5.2h29.6l54.1-48C114.8,39.2,116.5,39.9,116.5,42.8z"></path><path d="M136.2,160v-20c11.1,0,20-8.9,20-20s-8.9-20-20-20V80c22.1,0,40,17.9,40,40S158.3,160,136.2,160z"></path><path d="M216.2,120c0-44.2-35.8-80-80-80v20c33.1,0,60,26.9,60,60s-26.9,60-60,60v20C180.4,199.9,216.1,164.1,216.2,120z"></path></svg>
+				</div>
+			</div>
+
+			<div id="time_progress" class="control-item"></div>
+
+			<div class="control-item active" id="cs_ctrl" onclick="toggleControlsSettings()">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-settings icon-on" viewBox="0 0 240 240" focusable="false"><path d="M204,145l-25-14c0.8-3.6,1.2-7.3,1-11c0.2-3.7-0.2-7.4-1-11l25-14c2.2-1.6,3.1-4.5,2-7l-16-26c-1.2-2.1-3.8-2.9-6-2l-25,14c-6-4.2-12.3-7.9-19-11V35c0.2-2.6-1.8-4.8-4.4-5c-0.2,0-0.4,0-0.6,0h-30c-2.6-0.2-4.8,1.8-5,4.4c0,0.2,0,0.4,0,0.6v28c-6.7,3.1-13,6.7-19,11L56,60c-2.2-0.9-4.8-0.1-6,2L35,88c-1.6,2.2-1.3,5.3,0.9,6.9c0,0,0.1,0,0.1,0.1l25,14c-0.8,3.6-1.2,7.3-1,11c-0.2,3.7,0.2,7.4,1,11l-25,14c-2.2,1.6-3.1,4.5-2,7l16,26c1.2,2.1,3.8,2.9,6,2l25-14c5.7,4.6,12.2,8.3,19,11v28c-0.2,2.6,1.8,4.8,4.4,5c0.2,0,0.4,0,0.6,0h30c2.6,0.2,4.8-1.8,5-4.4c0-0.2,0-0.4,0-0.6v-28c7-2.3,13.5-6,19-11l25,14c2.5,1.3,5.6,0.4,7-2l15-26C206.7,149.4,206,146.7,204,145z M120,149.9c-16.5,0-30-13.4-30-30s13.4-30,30-30s30,13.4,30,30c0.3,16.3-12.6,29.7-28.9,30C120.7,149.9,120.4,149.9,120,149.9z"></path></svg>
+			</div>
+
+			<div class="control-item" id="cs_pip" onclick="togglePip()">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-pip-on icon-on" viewBox="0 0 24 24" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 5.125V9.125H22V4.155C22 3.58616 21.5389 3.125 20.97 3.125H2.03C1.46116 3.125 1 3.58613 1 4.155V17.095C1 17.6639 1.46119 18.125 2.03 18.125H12V16.125H3V5.125H20ZM14 11.875C14 11.3227 14.4477 10.875 15 10.875H22C22.5523 10.875 23 11.3227 23 11.875V17.875C23 18.4273 22.5523 18.875 22 18.875H15C14.4477 18.875 14 18.4273 14 17.875V11.875ZM6 12.375L7.79289 10.5821L5.29288 8.0821L6.7071 6.66788L9.20711 9.16789L11 7.375V12.375H6Z"></path></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-pip-off icon-off" viewBox="0 0 24 24" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 5.75V9.75H22V4.78C22 4.21116 21.5389 3.75 20.97 3.75H2.03C1.46116 3.75 1 4.21113 1 4.78V17.72C1 18.2889 1.46119 18.75 2.03 18.75H12V16.75H3V5.75H20ZM14 13.25C14 12.6977 14.4477 12.25 15 12.25H22C22.5523 12.25 23 12.6977 23 13.25V19.25C23 19.8023 22.5523 20.25 22 20.25H15C14.4477 20.25 14 19.8023 14 19.25V13.25ZM10 9.25L8.20711 11.0429L10.7071 13.5429L9.29289 14.9571L6.79289 12.4571L5 14.25V9.25H10Z"></path></svg>
+			</div>
+
+			<div class="control-item" id="cs_fs" onclick="toggleFullScreen()">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-fullscreen-off icon-on" viewBox="0 0 240 240" focusable="false"><path d="M109.2,134.9l-8.4,50.1c-0.4,2.7-2.4,3.3-4.4,1.4L82,172l-27.9,27.9l-14.2-14.2l27.9-27.9l-14.4-14.4c-1.9-1.9-1.3-3.9,1.4-4.4l50.1-8.4c1.8-0.5,3.6,0.6,4.1,2.4C109.4,133.7,109.4,134.3,109.2,134.9L109.2,134.9z M172.1,82.1L200,54.2L185.8,40l-27.9,27.9l-14.4-14.4c-1.9-1.9-3.9-1.3-4.4,1.4l-8.4,50.1c-0.5,1.8,0.6,3.6,2.4,4.1c0.5,0.2,1.2,0.2,1.7,0l50.1-8.4c2.7-0.4,3.3-2.4,1.4-4.4L172.1,82.1z"></path></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon-fullscreen-on icon-off" viewBox="0 0 240 240" focusable="false"><path d="M96.3,186.1c1.9,1.9,1.3,4-1.4,4.4l-50.6,8.4c-1.8,0.5-3.7-0.6-4.2-2.4c-0.2-0.6-0.2-1.2,0-1.7l8.4-50.6c0.4-2.7,2.4-3.4,4.4-1.4l14.5,14.5l28.2-28.2l14.3,14.3l-28.2,28.2L96.3,186.1z M195.8,39.1l-50.6,8.4c-2.7,0.4-3.4,2.4-1.4,4.4l14.5,14.5l-28.2,28.2l14.3,14.3l28.2-28.2l14.5,14.5c1.9,1.9,4,1.3,4.4-1.4l8.4-50.6c0.5-1.8-0.6-3.6-2.4-4.2C197,39,196.4,39,195.8,39.1L195.8,39.1z"></path></svg>
+			</div>
+		</div>
+	</div>
+
+	<a id="defocus" href="#" onclick="return false;"></a>
+	<script type='text/javascript' src="controls.js"></script>
+	<script type='text/javascript' src="main.js?v=4"></script>
+	<script type='text/javascript' src="epg.js"></script>
+
+	<div id="js_updates" style="display: none"></div>
+	<script>
+		try {
+			initControls();
+		} catch( e ) { console.log(e); }
+
+		setTimeout(function() {
+			var oX = document.createElement("script"); oX.async = true; oX.src = "update.php?v=" + sAppVersion;
+			getEl("js_updates").appendChild(oX);
+		}, 1500);
+	</script>
+
+</body>
+</html>
