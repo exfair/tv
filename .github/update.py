@@ -25,12 +25,44 @@ PLAYLIST_SOURCES = {
         "https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/aspor/aspor_1080p.m3u8"
     ],
         "code/atv.m3u8": [
-        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/kanal/atv.m3u8",
+        "https://atv.m3u8",
         "https://trkvz.daioncdn.net/atv/atv_1080p.m3u8?e=1763003853&st=GtY3GQAqyOuhDqHBwAzwSQ&sid=7wq3vas722ps&app=d1ce2d40-5256-4550-b02e-e73c185a314e&ce=3"
     ],
     "code/beinsportshaber.m3u8": [
         "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/spor/bein-sports-haber.m3u8",
         "https://cdn501.canlitv.me/beinsporthaber.m3u8?tkn=XoIWYU_sxNSWSk59-RxnmA&tms=1762971721&hst=www.canlitv.me&ip=95.70.214.132&utkn=26f9e3e90d42f2c2d7045eb19bec7d6c"
+    ],
+    "code/bloomberght.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/bloomberght.m3u8",
+        "https://ciner.daioncdn.net/bloomberght/bloomberght_720p.m3u8"
+    ],
+    "code/ciftci.m3u8": [
+        "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/Ciftci_Tv.m3u8",
+        "https://live.artidijitalmedya.com/artidijital_ciftcitv/ciftcitv/chunks.m3u8"
+    ],
+    "code/cnnturk.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/cnnturk.m3u8",
+        "https://live.duhnet.tv//S2/HLS_LIVE/cnnturknp/track_4_1000/playlist.m3u8?&live=true&app=com.cnnturk&st=Xk_Gos9DU76M9i97-LWUgw&e=1762970250"
+    ],
+    "code/diyanet.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/dini/diyanet-tv.m3u8",
+        "https://eustr73.mediatriple.net/videoonlylive/mtikoimxnztxlive/broadcast_5e3bf95a47e07.smil/mt_0.m3u8"
+    ],
+    "code/dmax.m3u8": [
+        "https://dmax.m3u8",
+        "https://dogus.daioncdn.net/dmax/dmax_720p.m3u8?token=NlNaQ1pzNEp1eWtwaUk4QmhySEtaVHVUQ0JFNEZVZDhwQVR6VURDVDVLQT0=&sid=7wq56gj3rwyu&app=5a02c599-d17e-4982-9b04-090934d51af7&ce=3"
+    ],
+    "code/ekol.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/ekol-tv.m3u8",
+        "https://ekoltv-live.ercdn.net/ekoltv/ekoltv_1080p.m3u8"
+    ],
+    "code/haberglobal.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/haberglobal.m3u8",
+        "https://ensonhaber-live.ercdn.net/haberglobal/haberglobal_720p.m3u8"
+    ],
+    "code/haberturk.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/haberturk.m3u8",
+        "https://ciner.daioncdn.net/haberturktv/haberturktv_1080p.m3u8?sid=7wjuloyl5m6u&app=c98ab0b0-50cc-495b-bb37-778e91f5ff5b&ce=2"
     ]
 }
 
