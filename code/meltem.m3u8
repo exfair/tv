@@ -1,3 +1,5 @@
 #EXTM3U
 #EXT-X-STREAM-INF:BANDWIDTH=8000000,NAME="Primary"
 https://vhxyrsly.rocketcdn.com/meltemtv/chunklist.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=6000000,NAME="Backup_2"
+https://live.canlitvulusal.xyz/live/meltemtv/index.m3u8
