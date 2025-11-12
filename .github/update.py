@@ -4,22 +4,14 @@ import base64
 import json
 import time
 
-
 GITHUB_OWNER = "exfair"
 
 REPO_NAME = "tv"
 
-
-# --- YENİ YAPI ---
-# Artık sadece URL'leri içeren basit bir liste.
-# İstediğiniz kadar URL'yi alt alta ekleyebilirsiniz.
 PLAYLIST_SOURCES = [
     "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/A_haber.m3u8",
     "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/A_Spor.m3u8",
     "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/spor/bein-sports-haber.m3u8"
-    # Buraya 50 tane daha URL ekleyebilirsiniz, hepsi çalışır.
-    # "https://.../link3.m3u8",
-    # "https://.../link4.m3u8",
 ]
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
@@ -80,24 +72,18 @@ def main():
         print("Hata: GITHUB_TOKEN bulunamadı. Workflow ayarlarınızı kontrol edin.")
         return
 
-    # Artık bir liste üzerinden döngü yapıyoruz
     for source_url in PLAYLIST_SOURCES:
         try:
-            # 1. Kaynak URL'den dosya adını al (örn: A_Spor.m3u8)
             original_filename = os.path.basename(source_url)
             
-            # 2. Dosya adını formatla (küçük harf, alt çizgisiz -> aspor.m3u8)
-            formatted_filename = original_filename.lower().replace("_", "")
+            formatted_filename = original_filename.lower().replace("_", "").replace("-", "") #Corrected this line!
             
-            # 3. 'code/' klasörünü başına ekle (örn: code/aspor.m3u8)
             new_file_path = f"code/{formatted_filename}"
             
             print(f"İşleniyor: {source_url} -> {new_file_path}...")
             
-            # 4. Kaynaktan içeriği çek
             new_content = fetch_new_content_from_source(source_url)
             
-            # 5. GitHub'a yeni formatlanmış adla yaz
             if new_content:
                 update_github_file(new_file_path, new_content)
             else:
@@ -106,7 +92,6 @@ def main():
         except Exception as e:
             print(f"Hata: {source_url} işlenirken bir sorun oluştu: {e}")
 
-        # API limitlerine takılmamak için kısa bir bekleme
         time.sleep(1)
 
 if __name__ == "__main__":
