@@ -15,7 +15,7 @@ REPO_NAME = "tv"
 # İstediğiniz kadar URL'yi alt alta ekleyebilirsiniz.
 PLAYLIST_SOURCES = [
     "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/A_haber.m3u8",
-    "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/A_Spor.m3u8"
+    "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/A_Spor.m3u8",
     "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/spor/bein-sports-haber.m3u8"
     # Buraya 50 tane daha URL ekleyebilirsiniz, hepsi çalışır.
     # "https://.../link3.m3u8",
