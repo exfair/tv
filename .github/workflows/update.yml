@@ -6,7 +6,7 @@ name: M3U8 Update
 on:
   # schedule ve workflow_dispatch 'on'un altında olmalı (iki boşluk girintili)
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/45 * * * *'
   workflow_dispatch:
 
 # 'jobs' ana seviyede olmalı (girintisiz)
