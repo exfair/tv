@@ -1,4 +1,5 @@
 #EXTM3U
-#EXT-X-INDEPENDENT-SEGMENTS
-#EXT-X-STREAM-INF:BANDWIDTH=5420722,CODECS="mp4a.40.2,avc1.640028",RESOLUTION=1920x1080,FRAME-RATE=30,VIDEO-RANGE=SDR,CLOSED-CAPTIONS=NONE
+#EXT-X-STREAM-INF:BANDWIDTH=8000000,NAME="Primary"
+https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1762983139/ei/g6gUafGICI3x6dsPzNKt0Qs/ip/45.147.47.3/id/6Ceo5zGLO2E.1/itag/301/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D299/rqh/1/hls_chunk_host/rr1---sn-p5qlsn7l.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/ss/1/ssa/1/bui/AdEuB5S4kqrUD2-bQRuYOAVWRJYpWqFM1jTADbhZftpxl5MGkLtvFctY5_uvCju_cwDBwy8G6_ypRuEv/spc/6b0G_P1HvR7X4nOsgRTkcFHL9UubKFXqBgjGITWIxqjA1OzfzK9oEQc0OFLNqBjJLbgXpqNDWUc/vprv/1/playlist_type/DVR/cps/84/met/1762961539,/mh/i2/mip/52.150.28.41/mm/44/mn/sn-p5qlsn7l/ms/lva/mv/u/mvi/1/pl/16/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51355912,51552689,51565115,51565682,51580968/mt/1762960624/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,ss,ssa,bui,spc,vprv,playlist_type/sig/AJfQdSswRQIgRlg52SHi6MGaEoaYsnBHISRDiIcqkfvkLHRX3blWivACIQDE2fxCXLWro4MBeQil5dVPN-HXGjzRdvMFpy48m8YhTw%3D%3D/lsparams/hls_chunk_host,cps,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgW4--cPbhtaScy2hn5IHVLzOK8ljEt8n2Oj-O6aCefjkCIAKkNEgCsK1c52tJ0B4BNZVnoETKqhnCc8PfdOF6k216/playlist/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=6000000,NAME="Backup_2"
 https://halktv-live.daioncdn.net/halktv/halktv_1080p.m3u8
