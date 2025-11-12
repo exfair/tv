@@ -1,6 +1,6 @@
 # .github/workflows/update.yml
 
-name: M3U8 Playlistlerini Güncelle
+name: M3U8 Update
 
 # 'on' ana tetikleyicidir
 on:
