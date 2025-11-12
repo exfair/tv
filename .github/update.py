@@ -5,8 +5,11 @@ import json
 import time
 
 GITHUB_OWNER = "exfair"
-REPO_NAME = "tv"
+REPO_NAME = "tv" # (veya tv-streams, reponuzun adı neyse o)
 
+# --- YENİ YAPI (Sözlük) ---
+# Anahtar (key): Oluşturulacak son dosya adı (formatlanmış)
+# Değer (value): Kaynak linklerin listesi (1. ana, 2. yedek)
 PLAYLIST_SOURCES = {
     "code/ahaber.m3u8": [
         "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/A_haber.m3u8",
@@ -20,6 +23,7 @@ PLAYLIST_SOURCES = {
         "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/spor/bein-sports-haber.m3u8",
         "https://cdn501.canlitv.me/beinsporthaber.m3u8?tkn=XoIWYU_sxNSWSk59-RxnmA&tms=1762971721&hst=www.canlitv.me&ip=95.70.214.132&utkn=26f9e3e90d42f2c2d7045eb19bec7d6c"
     ]
+    # Diğer kanalları da bu formatta ekleyebilirsiniz
 }
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
@@ -109,17 +113,26 @@ def main():
         
         # Loop through all sources for this channel (Primary, Backup, etc.)
         for source_url in source_urls:
-            print(f"  > Fetching source: {source_url}")
-            # 1. Get the content of the source M3U8 file
-            m3u8_content = fetch_new_content_from_source(source_url)
+            print(f"  > Processing source: {source_url}")
             
-            # 2. Extract the actual stream link (googlevideo, etc.) from it
-            stream_link = extract_stream_link(m3u8_content)
+            # --- YENİ MANTIK BURADA ---
+            # Eğer link bir 'raw.githubusercontent' linki ise (yani bizim YouTube M3U8'imiz ise)
+            # içeriğini çek ve içindeki linki ayıkla.
+            if "raw.githubusercontent.com" in source_url:
+                print("    -> GitHub master file detected. Parsing for stream link...")
+                m3u8_content = fetch_new_content_from_source(source_url)
+                stream_link = extract_stream_link(m3u8_content)
+            else:
+                # Eğer link 'raw.githubusercontent' DEĞİLSE (örn: trkvz-live... linki)
+                # bu linkin KENDİSİNİ doğrudan yedek link olarak kullan.
+                print("    -> Direct backup link detected. Using URL as-is.")
+                stream_link = source_url
+            # --- YENİ MANTIK SONU ---
             
             if stream_link:
                 extracted_links.append(stream_link)
             else:
-                print(f"  > Warning: Could not extract link from {source_url}.")
+                print(f"  > Warning: Could not get a valid link from {source_url}.")
         
         # 3. Build a new M3U8 file with all extracted links
         if extracted_links:
