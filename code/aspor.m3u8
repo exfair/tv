@@ -1,4 +1,5 @@
 #EXTM3U
-#EXT-X-INDEPENDENT-SEGMENTS
-#EXT-X-STREAM-INF:BANDWIDTH=5420722,CODECS="mp4a.40.2,avc1.640028",RESOLUTION=1920x1080,FRAME-RATE=30,VIDEO-RANGE=SDR,CLOSED-CAPTIONS=NONE
-https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/aspor/aspor_1080p.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=8000000,NAME="Primary"
+https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1762977643/ei/C5MUab2nM4yI6dsP0qqssAo/ip/85.105.233.142/id/ysh-bPiD3Oo.1/itag/91/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D139/sgovp/gir%3Dyes%3Bitag%3D160/rqh/1/hls_chunk_host/rr8---sn-u0g3uxax3-pnur.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/AdEuB5T5lIbpp21kvtCy2RFTBbUMi2FqxB8nTrwDK5t88bO5Ititqpa1kq2sBpV7LurLT8pUdUqBw6fg/spc/6b0G_CzHARJasaCz1DlAWojg7Z_NLZpt0CyxMKonSJVpeAIFTgtFkWdGJtrvsebcBBs/vprv/1/playlist_type/DVR/cps/326/initcwndbps/1682500/met/1762956044,/mh/ST/mm/44/mn/sn-u0g3uxax3-pnur/ms/lva/mv/m/mvi/8/pl/22/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51355912,51514994,51552689,51565116,51565681,51580968/mt/1762955561/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,playlist_type/sig/AJfQdSswRQIhANlUZzjMnDU8p5EO11uOlaegSTd4LV7w-PjRSN8mcWF8AiAa6UzYEePQgVgT9hi51A-0Sf1j-gW_3PbgDvO55k-0mA%3D%3D/lsparams/hls_chunk_host,cps,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgWB-s4r8-SJZcaPz1AqlXh5LOdfaue8fu1f5Nw8BFCyACIQDgGIbMzlOjqLyUTkEKZKeBag9wq1x-cZ0qz5XP_tIijA%3D%3D/playlist/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=6000000,NAME="Backup_2"
+aspor_1080p-1762954940000.ts
