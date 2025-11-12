@@ -86,7 +86,7 @@ PLAYLIST_SOURCES = {
     ],
     "code/meltem.m3u8": [
         "https://vhxyrsly.rocketcdn.com/meltemtv/chunklist.m3u8",
-        ""
+        "https://live.canlitvulusal.xyz/live/meltemtv/index.m3u8"
     ],
     "code/now.m3u8": [
         "https://uycyyuuzyh.turknet.ercdn.net/nphindgytw/nowtv/nowtv_720p.m3u8?app=web",
@@ -95,6 +95,34 @@ PLAYLIST_SOURCES = {
     "code/ntv.m3u8": [
         "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/ntv.m3u8",
         "https://dogus.daioncdn.net/ntv/ntv_720p.m3u8"
+    ],
+    "code/show.m3u8": [
+        "https://rmtftbjlne.turknet.ercdn.net/bpeytmnqyp/showtv/showtv_1080p.m3u8",
+        "https://live.canlitvulusal.xyz/live/showtv/index.m3u8"
+    ],
+    "code/sozcu.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/sozcu-tv.m3u8",
+        ""
+    ],
+    "code/star.m3u8": [
+        "https://cdn-tr.tivimivi.com/streams/118/1920x1080/index.m3u8",
+        "https://live.canlitvulusal.xyz/live/startv/index.m3u8"
+    ],
+    "code/tele1.m3u8": [
+        "https://tele1-live.ercdn.net/tele1/tele1_1080p.m3u8",
+        "https://live.canlitvulusal.xyz/live/tele1/index.m3u8"
+    ],
+    "code/teve2.m3u8": [
+        "https://demiroren-live.daioncdn.net/teve2/teve2_1080p.m3u8",
+        ""
+    ],
+    "code/tgrt.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/tgrt-haber.m3u8",
+        "https://canli.tgrthaber.com/tgrt.m3u8"
+    ],
+    "code/tele1.m3u8": [
+        "https://tele1-live.ercdn.net/tele1/tele1_1080p.m3u8",
+        ""
     ]
 }
 
