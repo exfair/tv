@@ -1,3 +1,5 @@
 #EXTM3U
 #EXT-X-STREAM-INF:BANDWIDTH=8000000,NAME="Primary"
+https://atv.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=6000000,NAME="Backup_2"
 https://trkvz.daioncdn.net/atv/atv_1080p.m3u8?e=1763003853&st=GtY3GQAqyOuhDqHBwAzwSQ&sid=7wq3vas722ps&app=d1ce2d40-5256-4550-b02e-e73c185a314e&ce=3
