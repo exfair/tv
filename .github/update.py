@@ -5,172 +5,174 @@ import json
 import time
 
 GITHUB_OWNER = "exfair"
-
 REPO_NAME = "tv"
 
-PLAYLIST_SOURCES = [
-
-    "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/A_haber.m3u8",
-    "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/A_Spor.m3u8",
-    "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/spor/bein-sports-haber.m3u8"
-]
-
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
-
-API_BASE_URL = f"https://api.github.com/repos/{GITHUB_OWNER}/{REPO_NAME}/contents/"
-
-HEADERS = {
-
-    "Authorization": f"token {GITHUB_TOKEN}",
-
-    "Accept": "application/vnd.github.v3+json",
-
+PLAYLIST_SOURCES = {
+    "code/ahaber.m3u8": [
+        "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/A_haber.m3u8",
+        "https://trkvz-live.ercdn.net/ahaberhd/ahaberhd_720p.m3u8?st=wpp-E7bUFcQrR-DqLjyCRA&e=1763002436"
+    ],
+    "code/aspor.m3u8": [
+        "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/A_Spor.m3u8",
+        "https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/aspor/aspor_1080p.m3u8"
+    ],
+    "code/beinsportshaber.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/spor/bein-sports-haber.m3u8",
+        "https://cdn501.canlitv.me/beinsporthaber.m3u8?tkn=XoIWYU_sxNSWSk59-RxnmA&tms=1762971721&hst=www.canlitv.me&ip=95.70.214.132&utkn=26f9e3e90d42f2c2d7045eb19bec7d6c"
+    ]
 }
 
-
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+API_BASE_URL = f"https://api.github.com/repos/{GITHUB_OWNER}/{REPO_NAME}/contents/"
+HEADERS = {
+    "Authorization": f"token {GITHUB_TOKEN}",
+    "Accept": "application/vnd.github.v3+json",
+}
 
 def fetch_new_content_from_source(source_url):
-
+    """Fetches M3U8 content from a source URL."""
     try:
-
         response = requests.get(source_url, timeout=10)
-
         response.raise_for_status()
-
         return response.text
-
     except requests.RequestException as e:
-
-        print(f"Hata: Kaynak URL ({source_url}) çekilemedi: {e}")
-
+        print(f"Error: Could not fetch source URL ({source_url}): {e}")
         return None
 
+def extract_stream_link(m3u8_content):
+    """Extracts the actual stream link (first non-# line) from M3U8 content."""
+    if not m3u8_content:
+        return None
+    for line in m3u8_content.splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            return line # Return the first valid link found
+    return None
 
+def build_variant_playlist(stream_links):
+    """Creates a variant M3U8 playlist from a list of stream links."""
+    content = "#EXTM3U\n"
+    bandwidth = 8000000 # 8Mbps (Primary)
+    
+    for i, link in enumerate(stream_links):
+        name = "Primary" if i == 0 else f"Backup_{i+1}"
+        content += f'#EXT-X-STREAM-INF:BANDWIDTH={bandwidth},NAME="{name}"\n'
+        content += f"{link}\n"
+        bandwidth = max(500000, bandwidth - 2000000) # Lower bandwidth for backups
+        
+    return content
 
 def get_file_sha(file_path):
-
+    """Gets the current SHA of a file on GitHub."""
     url = API_BASE_URL + file_path
-
     try:
-
         response = requests.get(url, headers=HEADERS)
-
         if response.status_code == 404:
-
-            print(f"Bilgi: {file_path} dosyası repoda bulunamadı. Yeni dosya olarak oluşturulacak.")
-
-            return None
-
+            return None # File doesn't exist
         response.raise_for_status()
-
         return response.json()["sha"]
-
-    except requests.RequestException as e:
-
-        print(f"Hata: Dosya SHA bilgisi alınamadı {file_path}: {e}")
-
+    except requests.RequestException:
         return None
 
-
-
 def update_github_file(file_path, new_content):
-
+    """Updates or creates a file on GitHub."""
     current_sha = get_file_sha(file_path)
-
     content_bytes = new_content.encode("utf-8")
-
     content_base64 = base64.b64encode(content_bytes).decode("utf-8")
-
     
-
     url = API_BASE_URL + file_path
-
     data = {
-
-        "message": f"Otomatik güncelleme: {file_path}",
-
+        "message": f"auto update: {file_path}", # English commit message
         "content": content_base64,
-
         "committer": {"name": "GitHub Actions Bot", "email": "actions@github.com"}
-
     }
-
     
-
     if current_sha:
-
         data["sha"] = current_sha
 
-
-
     try:
-
         response = requests.put(url, headers=HEADERS, data=json.dumps(data))
-
         response.raise_for_status()
-
-        print(f"Başarılı: {file_path} güncellendi.")
-
+        print(f"Success: {file_path} was updated.")
     except requests.RequestException as e:
-
-        print(f"Hata: {file_path} güncellenemedi: {e.text}")
-
-
+        print(f"Error: Could not update {file_path}: {e.text}")
 
 def main():
-
     if not GITHUB_TOKEN:
-
-        print("Hata: GITHUB_TOKEN bulunamadı. Workflow ayarlarınızı kontrol edin.")
-
+        print("Error: GITHUB_TOKEN not found. Check your workflow secrets.")
         return
 
-
-
-    for source_url in PLAYLIST_SOURCES:
-
-        try:
-
-            original_filename = os.path.basename(source_url)
-
-            
-
-            formatted_filename = original_filename.lower().replace("_", "").replace("-", "")
-
-            
-
-            new_file_path = f"code/{formatted_filename}"
-
-            
-
-            print(f"İşleniyor: {source_url} -> {new_file_path}...")
-
-            
-
-            new_content = fetch_new_content_from_source(source_url)
-
-            
-
-            if new_content:
-
-                update_github_file(new_file_path, new_content)
-
-            else:
-
-                print(f"Atlandı: {source_url} adresinden içerik alınamadı.")
-
+    # Loop through the dictionary
+    for output_file_path, source_urls in PLAYLIST_SOURCES.items():
+        print(f"Processing: {output_file_path}...")
+        extracted_links = [] # To hold the final stream links
         
-
-        except Exception as e:
-
-            print(f"Hata: {source_url} işlenirken bir sorun oluştu: {e}")
-
-
-
-        time.sleep(1)
-
-
+        # Loop through all sources for this channel (Primary, Backup, etc.)
+        for source_url in source_urls:
+            print(f"  > Fetching source: {source_url}")
+            # 1. Get the content of the source M3U8 file
+            m3u8_content = fetch_new_content_from_source(source_url)
+            
+            # 2. Extract the actual stream link (googlevideo, etc.) from it
+            stream_link = extract_stream_link(m3u8_content)
+            
+            if stream_link:
+                extracted_links.append(stream_link)
+            else:
+                print(f"  > Warning: Could not extract link from {source_url}.")
+        
+        # 3. Build a new M3U8 file with all extracted links
+        if extracted_links:
+            final_m3u8_content = build_variant_playlist(extracted_links)
+            print(f"  > Creating {output_file_path} with {len(extracted_links)} stream(s).")
+            # 4. Write the new file to GitHub
+            update_github_file(output_file_path, final_m3u8_content)
+        else:
+            print(f"  > Skipped: No valid links found for {output_file_path}.")
+            
+        time.sleep(1) # Be nice to the API
 
 if __name__ == "__main__":
-
     main()
+```eof
+
+---
+
+### 2. <code>.github/workflows/guncelle.yml</code> Dosyası (Düzeltilmiş)
+
+Bu da zamanlayıcı dosyanız. `run` satırını `code/update.py` olarak düzelttim ve `name` kısmını İngilizce yaptım.
+
+```yaml:YAML Zamanlayıcı:.github/workflows/guncelle.yml
+name: M3U8 Playlist Update
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  update-streams:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' 
+
+      - name: Install Python Packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run Playlist Update Script
+        # DÜZELTİLMİŞ YOL: Script'i 'code' klasöründen çalıştır
+        run: python code/update.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```eof
