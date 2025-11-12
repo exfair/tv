@@ -63,6 +63,38 @@ PLAYLIST_SOURCES = {
     "code/haberturk.m3u8": [
         "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/haberturk.m3u8",
         "https://ciner.daioncdn.net/haberturktv/haberturktv_1080p.m3u8?sid=7wjuloyl5m6u&app=c98ab0b0-50cc-495b-bb37-778e91f5ff5b&ce=2"
+    ],
+    "code/halk.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/halktv.m3u8",
+        "https://halktv-live.daioncdn.net/halktv/halktv_1080p.m3u8"
+    ],
+    "code/htscpor.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/halktv.m3u8",
+        "https://ciner.daioncdn.net/ht-spor/ht-spor_1080p.m3u8?app=web"
+    ],
+    "code/kanal7.m3u8": [
+        "https://kanal7-live.daioncdn.net/kanal7/kanal7_1080p.m3u8",
+        ""
+    ],
+    "code/kanald.m3u8": [
+        "https://demiroren.daioncdn.net/kanald/kanald_1080p.m3u8?&app=da2109ea-5dfe-4107-89ab-23593336ed61&ce=2",
+        ""
+    ],
+    "code/kralpop.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/diger/kral-pop.m3u8",
+        ""
+    ],
+    "code/meltem.m3u8": [
+        "https://vhxyrsly.rocketcdn.com/meltemtv/chunklist.m3u8",
+        ""
+    ],
+    "code/now.m3u8": [
+        "https://uycyyuuzyh.turknet.ercdn.net/nphindgytw/nowtv/nowtv_720p.m3u8?app=web",
+        ""
+    ],
+    "code/ntv.m3u8": [
+        "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/ntv.m3u8",
+        "https://dogus.daioncdn.net/ntv/ntv_720p.m3u8"
     ]
 }
 
