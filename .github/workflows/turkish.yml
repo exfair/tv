@@ -1,0 +1,76 @@
+name: Update Streams - Live
+
+on:
+  schedule:
+    # Run every 3 hours (more frequent for live streams)
+    - cron: '0 */3 * * *'
+  
+  workflow_dispatch:  # Allow manual triggering
+  
+  push:
+    branches:
+      - main
+    paths:
+      - 'turkish.json'
+      - 'main.py'
+      - '.github/workflows/turkish.yml'
+
+env:
+  CONFIG_FILE: turkish.json
+  OUTPUT_FOLDER: TR
+
+jobs:
+  update-streams:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install git+https://github.com/zinzied/cloudscraper.git
+          pip install -r requirements.txt
+      
+      - name: Update streams
+        env:
+          ENDPOINT: ${{ secrets.ENDPOINT }}
+        run: |
+          python main.py ${{ env.CONFIG_FILE }} --folder ${{ env.OUTPUT_FOLDER }}
+      
+      - name: List output files
+        run: |
+          echo "Contents of ${{ env.OUTPUT_FOLDER }}:"
+          ls -la ${{ env.OUTPUT_FOLDER }}/ || echo "Folder does not exist"
+          echo ""
+          echo "Git status:"
+          git status
+      
+      - name: Check for changes
+        id: git-check
+        run: |
+          git add ${{ env.OUTPUT_FOLDER }}/ || true
+          if git diff --cached --quiet; then
+            echo "No changes detected"
+            echo "changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changes detected"
+            echo "changes=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit and push changes
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "Update streams: ${{ env.CONFIG_FILE }}"
+          git push
