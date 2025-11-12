@@ -23,6 +23,11 @@ jobs:
   update-streams:
     runs-on: ubuntu-latest
     
+    # !!! EKLENMESİ GEREKEN BÖLÜM BURASI !!!
+    permissions:
+      contents: write 
+    # !!! EKLENMESİ GEREKEN BÖLÜM BURASI !!!
+      
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -43,7 +48,7 @@ jobs:
       
       - name: Update streams
         env:
-          ENDPOINT: ${{ secrets.ENDPOINT }}
+          ENDPOINT: ${{ secrets.ENDPOINT }} # <-- 2. SORUN: Bu secret'ı deponuzun ayarlarından eklemelisiniz.
         run: |
           python main.py ${{ env.CONFIG_FILE }} --folder ${{ env.OUTPUT_FOLDER }}
       
