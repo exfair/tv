@@ -11,7 +11,8 @@ REPO_NAME = "tv"
 PLAYLIST_SOURCES = [
     "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/A_haber.m3u8",
     "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/A_Spor.m3u8",
-    "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/spor/bein-sports-haber.m3u8"
+    "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/bein-sports-haber.m3u8",
+    "https://raw.githubusercontent.com/tecotv2025/tecotv/refs/heads/main/playlist/akit-tv.m3u8",
 ]
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
@@ -52,7 +53,7 @@ def update_github_file(file_path, new_content):
     
     url = API_BASE_URL + file_path
     data = {
-        "message": f"Otomatik güncelleme: {file_path}",
+        "message": f"auto update {file_path}",
         "content": content_base64,
         "committer": {"name": "GitHub Actions Bot", "email": "actions@github.com"}
     }
@@ -76,11 +77,11 @@ def main():
         try:
             original_filename = os.path.basename(source_url)
             
-            formatted_filename = original_filename.lower().replace("_", "").replace("-", "") #Corrected this line!
+            formatted_filename = original_filename.lower().replace("_", "").replace("-", "")
             
             new_file_path = f"code/{formatted_filename}"
             
-            print(f"İşleniyor: {source_url} -> {new_file_path}...")
+            print(f"İşleniyor: Orijinal ad '{original_filename}' -> Yeni ad '{new_file_path}'...")
             
             new_content = fetch_new_content_from_source(source_url)
             
@@ -96,3 +97,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+```eof
