@@ -1,5 +1,5 @@
 #EXTM3U
 #EXT-X-STREAM-INF:BANDWIDTH=8000000,NAME="Primary"
-<html>
+<!doctype html>
 #EXT-X-STREAM-INF:BANDWIDTH=6000000,NAME="Backup_2"
 https://live.artidijitalmedya.com/artidijital_ciftcitv/ciftcitv/chunks.m3u8
