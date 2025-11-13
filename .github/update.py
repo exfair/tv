@@ -30,7 +30,7 @@ PLAYLIST_SOURCES = {
     ],
     "code/beinsportshaber.m3u8": [
         "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/spor/bein-sports-haber.m3u8",
-        "https://cdn501.canlitv.me/beinsporthaber.m3u8?tkn=XoIWYU_sxNSWSk59-RxnmA&tms=1762971721&hst=www.canlitv.me&ip=95.70.214.132&utkn=26f9e3e90d42f2c2d7045eb19bec7d6c"
+        "https://live.canlitvulusal.xyz/live/beinsportshaber/index.m3u8"
     ],
     "code/bloomberght.m3u8": [
         "https://raw.githubusercontent.com/UzunMuhalefet/yt-streams/refs/heads/main/TR/haber/bloomberght.m3u8",
